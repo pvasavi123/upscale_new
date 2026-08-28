@@ -435,6 +435,7 @@
         
         // Auto-detect template feature mapping
         state.suggestedTemplate = resData.data.suggestedTemplate;
+        state.answers.project_type = resData.data.projectCategory || resData.data.suggestedTemplate;
         
         // Move to Discovery Questionnaire
         state.currentStep = 'discovery';
