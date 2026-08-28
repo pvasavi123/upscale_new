@@ -39,10 +39,14 @@
     typing: null
   };
 
-  // Initialize chatbot on DOMContentLoaded
-  document.addEventListener('DOMContentLoaded', () => {
+  // Initialize chatbot on DOMContentLoaded or immediately if already ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      initChatbot();
+    });
+  } else {
     initChatbot();
-  });
+  }
 
   /**
    * Loads the knowledge base and sets up UI components.
@@ -74,6 +78,12 @@
    * Employing textContent and element generation to avoid XSS vectors.
    */
   function buildDOM() {
+    // Remove existing widget if it already exists (e.g., during hot-reloads)
+    const existingRoot = document.getElementById('chatbot-widget-root');
+    if (existingRoot) {
+      existingRoot.remove();
+    }
+
     // Root container
     els.root = document.createElement('div');
     els.root.id = 'chatbot-widget-root';
