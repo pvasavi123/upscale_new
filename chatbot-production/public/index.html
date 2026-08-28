@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upscale AI Advisor - Production Test Console</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- FontAwesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Chatbot CSS -->
+  <link rel="stylesheet" href="chatbot.css">
+  <style>
+    :root {
+      --navy-dark: #060B16;
+      --navy: #0B1528;
+      --orange: #FF5A1F;
+    }
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--navy-dark);
+      color: #FFFFFF;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow-x: hidden;
+      position: relative;
+    }
+    /* Simple grid background similar to the site design */
+    .grid-pattern {
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 20px 20px;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .container {
+      max-width: 600px;
+      padding: 40px 20px;
+      background-color: var(--navy);
+      border: 1px solid #1A2844;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      z-index: 2;
+    }
+    .logo {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 10px;
+    }
+    .logo span {
+      color: var(--orange);
+    }
+    .tagline {
+      color: #94A3B8;
+      font-size: 1.1rem;
+      margin-bottom: 24px;
+    }
+    .description {
+      color: #CBD5E1;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      font-size: 0.95rem;
+    }
+    .badge {
+      display: inline-block;
+      background-color: rgba(255, 90, 31, 0.1);
+      color: var(--orange);
+      padding: 6px 16px;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .toggle-theme-btn {
+      background: none;
+      border: 1px solid #1A2844;
+      color: #CBD5E1;
+      padding: 10px 20px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+    .toggle-theme-btn:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: #FFFFFF;
+    }
+    /* Light Mode Overrides for landing page */
+    body.light-mode {
+      background-color: #F8FAFC;
+      color: #0F172A;
+    }
+    body.light-mode .grid-pattern {
+      background-image: radial-gradient(rgba(11, 21, 40, 0.05) 1px, transparent 1px);
+    }
+    body.light-mode .container {
+      background-color: #FFFFFF;
+      border-color: #E2E8F0;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.06);
+    }
+    body.light-mode .tagline {
+      color: #64748B;
+    }
+    body.light-mode .description {
+      color: #475569;
+    }
+    body.light-mode .toggle-theme-btn {
+      border-color: #CBD5E1;
+      color: #475569;
+    }
+    body.light-mode .toggle-theme-btn:hover {
+      background-color: rgba(0, 0, 0, 0.03);
+      color: #0F172A;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-pattern"></div>
+  
+  <div class="container">
+    <div class="badge">Isolated Production Sandbox</div>
+    <h1 class="logo">Upscale AI <span>Advisor</span></h1>
+    <p class="tagline">Ideas • Code • Grow</p>
+    <p class="description">
+      This page hosts the new production-ready, backend-backed Upscale AI Project Advisor chatbot. 
+      The chatbot communicates securely with our local backend APIs, keeping all API keys safe, 
+      verifying AI responses, and persisting lead data into SQLite database.
+    </p>
+    <button class="toggle-theme-btn" id="theme-btn">
+      <i class="fa-solid fa-moon"></i> Toggle Light/Dark Mode
+    </button>
+  </div>
+
+  <script>
+    // Theme toggle utility matching site behavior
+    const themeBtn = document.getElementById('theme-btn');
+    themeBtn.addEventListener('click', () => {
+      document.body.classList.toggle('light-mode');
+      const isLight = document.body.classList.contains('light-mode');
+      themeBtn.innerHTML = isLight 
+        ? '<i class="fa-solid fa-sun"></i> Toggle Light/Dark Mode'
+        : '<i class="fa-solid fa-moon"></i> Toggle Light/Dark Mode';
+    });
+  </script>
+
+  <!-- Chatbot Script -->
+  <script src="chatbot.js"></script>
+</body>
+</html>
