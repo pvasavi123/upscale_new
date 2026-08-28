@@ -171,12 +171,7 @@
   },
 
   "discoveryQuestions": [
-    {
-      "id": "project_type",
-      "question": "What type of project are you looking to build?",
-      "type": "single_choice",
-      "options": ["E-Commerce / Online Store", "Portfolio / Business Website", "AI-Powered Application", "Mobile Application", "Food Delivery App", "Learning Management System", "Healthcare Application", "Social Media Platform", "Other"]
-    },
+  
     {
       "id": "target_users",
       "question": "Who are the primary users of this application?",
