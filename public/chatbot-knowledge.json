@@ -1,0 +1,233 @@
+{
+  "company": {
+    "name": "Upscale",
+    "tagline": "Ideas • Code • Grow",
+    "description": "Upscale is a professional six-member technology team specializing in full-stack development, AI engineering, web and mobile applications, backend systems, and software testing.",
+    "phone": "+91 6304192151",
+    "emails": {
+      "support": "upscale.careersupport@gmail.com",
+      "freelancer": "upscale.freelancer@gmail.com"
+    },
+    "linkedin": "https://www.linkedin.com/company/upscale-it-services/posts/?feedView=all",
+    "services": [
+      "Full-Stack Development",
+      "Web Development",
+      "Mobile App Development",
+      "Backend Development",
+      "AI Engineering",
+      "Prompt Engineering",
+      "Software Testing",
+      "Database Solutions",
+      "Cloud & Deployment"
+    ]
+  },
+
+  "technologyCatalog": {
+    "frontend": [
+      { "name": "React.js", "description": "Component-based UI library for building interactive web interfaces.", "recommendedFor": ["web_app", "ecommerce", "dashboard", "social_media"] },
+      { "name": "React Native", "description": "Cross-platform mobile framework using React.", "recommendedFor": ["mobile_app", "cross_platform"] },
+      { "name": "HTML5", "description": "Standard markup language for web pages.", "recommendedFor": ["portfolio", "landing_page", "web_app"] },
+      { "name": "CSS3", "description": "Styling language for responsive, modern web designs.", "recommendedFor": ["portfolio", "landing_page", "web_app"] },
+      { "name": "JavaScript", "description": "Core programming language for web interactivity.", "recommendedFor": ["web_app", "portfolio", "landing_page"] },
+      { "name": "Bootstrap", "description": "Popular CSS framework for responsive design.", "recommendedFor": ["web_app", "dashboard", "admin_panel"] },
+      { "name": "Tailwind CSS", "description": "Utility-first CSS framework for rapid UI development.", "recommendedFor": ["web_app", "landing_page", "modern_ui"] }
+    ],
+    "backend": [
+      { "name": "Java", "description": "Enterprise-grade language for robust backend systems.", "recommendedFor": ["enterprise", "ecommerce", "large_scale"] },
+      { "name": "Spring Boot", "description": "Java framework for rapid backend API development.", "recommendedFor": ["enterprise", "ecommerce", "microservices"] },
+      { "name": "Python", "description": "Versatile language for web, AI, and data applications.", "recommendedFor": ["ai_app", "data_app", "web_app", "automation"] },
+      { "name": "Django", "description": "Full-featured Python web framework with built-in admin.", "recommendedFor": ["web_app", "cms", "admin_panel", "rapid_prototype"] },
+      { "name": "Node.js", "description": "JavaScript runtime for scalable server-side applications.", "recommendedFor": ["real_time", "api", "chat", "startup"] },
+      { "name": "REST APIs", "description": "Standard API architecture for frontend-backend communication.", "recommendedFor": ["web_app", "mobile_app", "integration"] }
+    ],
+    "database": [
+      { "name": "MySQL", "description": "Reliable relational database for structured data.", "recommendedFor": ["web_app", "ecommerce", "enterprise"] },
+      { "name": "PostgreSQL", "description": "Advanced relational database with strong data integrity.", "recommendedFor": ["enterprise", "analytics", "large_scale"] },
+      { "name": "MongoDB", "description": "Flexible NoSQL database for unstructured or evolving data.", "recommendedFor": ["startup", "real_time", "content_management"] },
+      { "name": "SQL", "description": "Standard query language for relational databases.", "recommendedFor": ["web_app", "enterprise", "reporting"] },
+      { "name": "PL/SQL", "description": "Procedural SQL for complex database logic.", "recommendedFor": ["enterprise", "oracle", "stored_procedures"] }
+    ],
+    "ai": [
+      { "name": "AI Engineering", "description": "Building AI-powered features and intelligent automation.", "recommendedFor": ["ai_app", "chatbot", "automation", "recommendation"] },
+      { "name": "Prompt Engineering", "description": "Designing and optimizing AI prompts for LLM applications.", "recommendedFor": ["chatbot", "content_generation", "ai_app"] },
+      { "name": "Pandas", "description": "Python library for data analysis and manipulation.", "recommendedFor": ["data_app", "analytics", "reporting"] }
+    ],
+    "testing": [
+      { "name": "Manual Testing", "description": "Hands-on testing of application features and user flows.", "recommendedFor": ["all"] },
+      { "name": "API Testing", "description": "Validating REST API endpoints, responses, and error handling.", "recommendedFor": ["web_app", "mobile_app", "backend"] },
+      { "name": "Database Testing", "description": "Verifying data integrity, queries, and database operations.", "recommendedFor": ["enterprise", "ecommerce", "data_app"] },
+      { "name": "Retesting", "description": "Re-verifying fixed defects to confirm resolution.", "recommendedFor": ["all"] },
+      { "name": "Regression Testing", "description": "Ensuring new changes do not break existing functionality.", "recommendedFor": ["all"] }
+    ],
+    "cloud": [
+      { "name": "AWS", "description": "Amazon Web Services for scalable cloud infrastructure.", "recommendedFor": ["enterprise", "large_scale", "production"] },
+      { "name": "Git", "description": "Version control system for collaborative development.", "recommendedFor": ["all"] },
+      { "name": "GitHub", "description": "Code hosting and collaboration platform.", "recommendedFor": ["all"] }
+    ]
+  },
+
+  "pricingRules": {
+    "currency": "INR",
+    "currencySymbol": "₹",
+    "hourlyRateRange": { "min": 500, "max": 1500 },
+    "moduleEffort": {
+      "authentication": { "hours": 20, "complexity": "medium", "label": "User Authentication & Login" },
+      "user_dashboard": { "hours": 30, "complexity": "medium", "label": "User Dashboard" },
+      "admin_panel": { "hours": 35, "complexity": "high", "label": "Admin Panel" },
+      "payment_integration": { "hours": 40, "complexity": "high", "label": "Payment Gateway Integration" },
+      "crud_module": { "hours": 15, "complexity": "low", "label": "Basic CRUD Operations" },
+      "file_upload": { "hours": 12, "complexity": "low", "label": "File Upload & Management" },
+      "notifications": { "hours": 15, "complexity": "medium", "label": "Push/Email Notifications" },
+      "search_filter": { "hours": 10, "complexity": "low", "label": "Search & Filter" },
+      "api_integration": { "hours": 25, "complexity": "medium", "label": "Third-Party API Integration" },
+      "chat_messaging": { "hours": 35, "complexity": "high", "label": "Real-Time Chat/Messaging" },
+      "reporting_analytics": { "hours": 30, "complexity": "medium", "label": "Reporting & Analytics" },
+      "user_profile": { "hours": 12, "complexity": "low", "label": "User Profile Management" },
+      "landing_page": { "hours": 8, "complexity": "low", "label": "Landing Page" },
+      "email_integration": { "hours": 10, "complexity": "low", "label": "Email Service Integration" },
+      "social_login": { "hours": 8, "complexity": "low", "label": "Social Media Login" },
+      "maps_location": { "hours": 15, "complexity": "medium", "label": "Maps & Location Services" },
+      "order_management": { "hours": 25, "complexity": "medium", "label": "Order Management System" },
+      "inventory_management": { "hours": 30, "complexity": "medium", "label": "Inventory Management" },
+      "role_based_access": { "hours": 18, "complexity": "medium", "label": "Role-Based Access Control" },
+      "media_gallery": { "hours": 15, "complexity": "low", "label": "Image/Video Gallery" }
+    },
+    "phases": [
+      { "name": "Requirements & Analysis", "percentageOfTotal": 10 },
+      { "name": "UI/UX Design", "percentageOfTotal": 15 },
+      { "name": "Development", "percentageOfTotal": 45 },
+      { "name": "Testing & QA", "percentageOfTotal": 20 },
+      { "name": "Deployment & Handoff", "percentageOfTotal": 10 }
+    ],
+    "overheadMultiplier": 1.25,
+    "disclaimer": "All estimates are indicative and subject to detailed analysis by the Upscale team. Final pricing will be provided after a thorough review of your requirements."
+  },
+
+  "projectTemplates": {
+    "ecommerce": {
+      "name": "E-Commerce Application",
+      "description": "Online store with product catalog, cart, checkout, and payment processing.",
+      "suggestedFeatures": ["authentication", "user_dashboard", "admin_panel", "payment_integration", "crud_module", "search_filter", "order_management", "notifications", "email_integration"],
+      "suggestedTech": { "frontend": "React.js", "backend": "Node.js or Spring Boot", "database": "MySQL or PostgreSQL" },
+      "estimatedWeeks": "8-12",
+      "complexity": "high"
+    },
+    "portfolio_website": {
+      "name": "Portfolio / Business Website",
+      "description": "Professional website to showcase services, projects, and team information.",
+      "suggestedFeatures": ["landing_page", "crud_module", "email_integration", "media_gallery"],
+      "suggestedTech": { "frontend": "React.js or HTML/CSS/JS", "backend": "Node.js or Django", "database": "MongoDB or MySQL" },
+      "estimatedWeeks": "2-4",
+      "complexity": "low"
+    },
+    "ai_application": {
+      "name": "AI-Powered Application",
+      "description": "Application with AI features like chatbots, recommendations, or data analysis.",
+      "suggestedFeatures": ["authentication", "user_dashboard", "api_integration", "reporting_analytics", "file_upload"],
+      "suggestedTech": { "frontend": "React.js", "backend": "Python/Django", "database": "PostgreSQL or MongoDB" },
+      "estimatedWeeks": "6-10",
+      "complexity": "high"
+    },
+    "mobile_app": {
+      "name": "Mobile Application",
+      "description": "Cross-platform mobile app for iOS and Android.",
+      "suggestedFeatures": ["authentication", "user_profile", "notifications", "social_login", "api_integration"],
+      "suggestedTech": { "frontend": "React Native", "backend": "MongoDB or MySQL", "database": "MongoDB or MySQL" },
+      "estimatedWeeks": "8-14",
+      "complexity": "high"
+    },
+    "food_delivery": {
+      "name": "Food Delivery Application",
+      "description": "Platform connecting restaurants, delivery drivers, and customers.",
+      "suggestedFeatures": ["authentication", "user_dashboard", "admin_panel", "payment_integration", "order_management", "maps_location", "notifications", "search_filter", "chat_messaging"],
+      "suggestedTech": { "frontend": "React.js or React Native", "backend": "Node.js or Spring Boot", "database": "MySQL or PostgreSQL" },
+      "estimatedWeeks": "12-18",
+      "complexity": "high"
+    },
+    "learning_management": {
+      "name": "Learning Management System",
+      "description": "Educational platform with courses, quizzes, progress tracking, and certificates.",
+      "suggestedFeatures": ["authentication", "user_dashboard", "admin_panel", "crud_module", "file_upload", "reporting_analytics", "notifications", "role_based_access", "media_gallery"],
+      "suggestedTech": { "frontend": "React.js", "backend": "Django or Spring Boot", "database": "PostgreSQL or MySQL" },
+      "estimatedWeeks": "10-14",
+      "complexity": "high"
+    },
+    "healthcare_app": {
+      "name": "Healthcare Application",
+      "description": "Patient management, appointments, medical records, and telemedicine features.",
+      "suggestedFeatures": ["authentication", "user_dashboard", "admin_panel", "crud_module", "notifications", "reporting_analytics", "role_based_access", "chat_messaging", "file_upload"],
+      "suggestedTech": { "frontend": "React.js", "backend": "Spring Boot or Django", "database": "PostgreSQL" },
+      "estimatedWeeks": "12-16",
+      "complexity": "high"
+    },
+    "social_media": {
+      "name": "Social Media Platform",
+      "description": "Social networking app with profiles, feeds, messaging, and media sharing.",
+      "suggestedFeatures": ["authentication", "user_profile", "social_login", "chat_messaging", "notifications", "media_gallery", "search_filter", "reporting_analytics"],
+      "suggestedTech": { "frontend": "React.js or React Native", "backend": "Node.js", "database": "MongoDB" },
+      "estimatedWeeks": "14-20",
+      "complexity": "high"
+    }
+  },
+
+  "discoveryQuestions": [
+    {
+      "id": "project_type",
+      "question": "What type of project are you looking to build?",
+      "type": "single_choice",
+      "options": ["E-Commerce / Online Store", "Portfolio / Business Website", "AI-Powered Application", "Mobile Application", "Food Delivery App", "Learning Management System", "Healthcare Application", "Social Media Platform", "Other"]
+    },
+    {
+      "id": "target_users",
+      "question": "Who are the primary users of this application?",
+      "type": "text",
+      "placeholder": "e.g., Students, customers, internal team, patients..."
+    },
+    {
+      "id": "platform",
+      "question": "Which platforms do you need?",
+      "type": "single_choice",
+      "options": ["Web Application", "Mobile App (iOS & Android)", "Both Web & Mobile", "Just a Website"]
+    },
+    {
+      "id": "scale",
+      "question": "What is the expected user scale?",
+      "type": "single_choice",
+      "options": ["Small (under 100 users)", "Medium (100 – 10,000 users)", "Large (10,000+ users)"]
+    },
+    {
+      "id": "key_features",
+      "question": "What are the most important features you need?",
+      "type": "text",
+      "placeholder": "e.g., User login, payment, real-time chat, admin panel..."
+    },
+    {
+      "id": "integrations",
+      "question": "Do you need any third-party integrations?",
+      "type": "multi_choice",
+      "options": ["Payment Gateway", "Maps / Location", "Email Service", "Social Media Login", "SMS / OTP", "Cloud Storage", "AI / Machine Learning", "None / Not Sure"]
+    },
+    {
+      "id": "timeline",
+      "question": "What is your expected timeline?",
+      "type": "single_choice",
+      "options": ["1–2 weeks", "2–4 weeks", "1–2 months", "2–4 months", "4+ months", "Flexible"]
+    },
+    {
+      "id": "budget_range",
+      "question": "What is your approximate budget range?",
+      "type": "single_choice",
+      "options": ["Under ₹25,000", "₹25,000 – ₹50,000", "₹50,000 – ₹1,00,000", "₹1,00,000 – ₹3,00,000", "₹3,00,000+", "Not decided yet"]
+    }
+  ],
+
+  "systemPrompt": "You are the Upscale AI Project Advisor — a professional, helpful, and concise assistant for Upscale, a six-member technology team. Your role is to help potential clients and students understand their project requirements and guide them toward a structured plan.\n\nRules you MUST follow:\n1. Be professional, friendly, and concise. Use short paragraphs.\n2. Only recommend technologies from Upscale's approved catalog.\n3. NEVER invent prices or commit to delivery dates. All estimates are indicative.\n4. Ask clarifying questions when the user's requirements are unclear.\n5. Guide the conversation through: idea understanding → feature discovery → technology recommendation → estimation → summary.\n6. When suggesting features, explain WHY each feature is useful for the user's project.\n7. Always mention that final pricing and timelines require review by the Upscale team.\n8. If the user asks something outside your scope, politely redirect them to contact the Upscale team directly.\n9. Format your responses with clear structure using line breaks.\n10. Keep responses under 150 words unless generating a summary.",
+
+  "responseTemplates": {
+    "greeting": "👋 Hi! I'm the Upscale AI Project Advisor.\n\nI can help you turn your project idea into a structured plan with technology recommendations, feature suggestions, and effort estimates.\n\nTell me — what project idea do you have in mind?",
+    "estimateDisclaimer": "⚠️ Note: These estimates are indicative and based on standard module complexity. Final pricing and timelines will be confirmed by the Upscale team after a detailed review of your requirements.",
+    "leadCapturePrompt": "Great! Your project summary is ready. To receive a detailed proposal from our team, could you share your contact details?\n\nPlease provide:\n• Your full name\n• Email address\n• Phone number (optional)",
+    "thankYou": "🎉 Thank you! Your project details have been saved. The Upscale team will review your requirements and reach out with a detailed proposal shortly.\n\nYou can also contact us directly:\n📧 upscale.careersupport@gmail.com\n📞 +91 6304192151",
+    "fallback": "I'm not sure I understood that. Could you rephrase or choose one of the options above? If you'd like to speak with our team directly, feel free to reach out at upscale.careersupport@gmail.com."
+  }
+}
