@@ -3,7 +3,7 @@ const path = require('path');
 const { GoogleGenAI } = require('@google/generative-ai');
 
 // Cache knowledge base file path
-const knowledgePath = path.join(__dirname, '..', 'public', 'chatbot-knowledge.json');
+const knowledgePath = path.join(__dirname, '..', '..', 'public', 'chatbot-knowledge.json');
 
 /**
  * Loads the chatbot knowledge configuration.

@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 // Cache knowledge base file path
-const knowledgePath = path.join(__dirname, '..', 'public', 'chatbot-knowledge.json');
+const knowledgePath = path.join(__dirname, '..', '..', 'public', 'chatbot-knowledge.json');
 
 /**
  * Loads and returns the chatbot knowledge configurations.

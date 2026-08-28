@@ -57,7 +57,7 @@ app.use(express.json({ limit: '10kb' }));
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 
 // Serve frontend static assets securely
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '..', 'public')));
 
 // Global API rate limiting
 app.use('/api', apiLimiter);
