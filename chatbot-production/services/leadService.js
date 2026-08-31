@@ -50,7 +50,7 @@ function saveLead(leadData, estimate) {
  * @returns {string} Encoded WhatsApp wa.me redirect link
  */
 function generateWhatsAppHandoffUrl(leadData, estimate) {
-  const rawPhone = process.env.WHATSAPP_NUMBER || '6304192151';
+  const rawPhone = process.env.WHATSAPP_NUMBER || '9063593070';
   // Strip non-digits from target phone number
   const targetPhone = rawPhone.replace(/\D/g, '');
 

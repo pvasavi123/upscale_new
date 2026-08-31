@@ -71,7 +71,7 @@ Open the `.env` file and set your credentials:
 ```ini
 PORT=5000
 GEMINI_API_KEY=your_actual_gemini_api_key
-WHATSAPP_NUMBER=6304192151
+WHATSAPP_NUMBER=9063593070
 ```
 
 *Note: If no `GEMINI_API_KEY` is provided, the server will log a message and fall back to local rule-based mock matching.*
@@ -189,7 +189,7 @@ Saves lead data and constructs WhatsApp handoff redirects.
       "message": "Lead captured successfully.",
       "leadId": 1,
       "estimate": { ... },
-      "whatsappUrl": "https://wa.me/916304192151?text=..."
+      "whatsappUrl": "https://wa.me/919063593070?text=..."
     }
     ```
 

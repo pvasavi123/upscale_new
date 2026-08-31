@@ -3,7 +3,7 @@
     "name": "Upscale",
     "tagline": "Ideas • Code • Grow",
     "description": "Upscale is a professional six-member technology team specializing in full-stack development, AI engineering, web and mobile applications, backend systems, and software testing.",
-    "phone": "+91 6304192151",
+    "phone": "+91 9063593070",
     "emails": {
       "support": "upscale.careersupport@gmail.com",
       "freelancer": "upscale.freelancer@gmail.com"
@@ -222,7 +222,7 @@
     "greeting": "👋 Hi! I'm the Upscale AI Project Advisor.\n\nI can help you turn your project idea into a structured plan with technology recommendations, feature suggestions, and effort estimates.\n\nTell me — what project idea do you have in mind?",
     "estimateDisclaimer": "⚠️ Note: These estimates are indicative and based on standard module complexity. Final pricing and timelines will be confirmed by the Upscale team after a detailed review of your requirements.",
     "leadCapturePrompt": "Great! Your project summary is ready. To receive a detailed proposal from our team, could you share your contact details?\n\nPlease provide:\n• Your full name\n• Email address\n• Phone number (optional)",
-    "thankYou": "🎉 Thank you! Your project details have been saved. The Upscale team will review your requirements and reach out with a detailed proposal shortly.\n\nYou can also contact us directly:\n📧 upscale.careersupport@gmail.com\n📞 +91 6304192151",
+    "thankYou": "🎉 Thank you! Your project details have been saved. The Upscale team will review your requirements and reach out with a detailed proposal shortly.\n\nYou can also contact us directly:\n📧 upscale.careersupport@gmail.com\n📞 +91 9063593070",
     "fallback": "I'm not sure I understood that. Could you rephrase or choose one of the options above? If you'd like to speak with our team directly, feel free to reach out at upscale.careersupport@gmail.com."
   }
 }
