@@ -45,13 +45,13 @@ export default function HowWeWork({ onNavigate }) {
         </div>
 
         {/* Pathway Tabs */}
-        <div className="flex justify-center gap-4 mb-16">
+        <div className="flex flex-wrap justify-center gap-3 sm:gap-4 mb-12 sm:mb-16">
           <button
             onClick={() => setActiveTab('students')}
-            className={`flex items-center gap-2 font-display font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-xl border transition-all duration-300 focus:outline-none cursor-pointer ${
+            className={`flex items-center gap-2 font-display font-bold text-xs sm:text-sm uppercase tracking-wider px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl border transition-all duration-300 focus:outline-none cursor-pointer ${
               activeTab === 'students'
                 ? 'bg-brand-orange border-brand-orange text-white shadow-lg shadow-brand-orange/20 scale-[1.02]'
-                : 'bg-white border-gray-150 text-gray-500 hover:text-brand-orange hover:border-brand-orange/30'
+                : 'bg-white border-gray-200 text-gray-500 hover:text-brand-orange hover:border-brand-orange/30'
             }`}
           >
             <Users className="w-4 h-4" />
@@ -59,10 +59,10 @@ export default function HowWeWork({ onNavigate }) {
           </button>
           <button
             onClick={() => setActiveTab('clients')}
-            className={`flex items-center gap-2 font-display font-bold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-xl border transition-all duration-300 focus:outline-none cursor-pointer ${
+            className={`flex items-center gap-2 font-display font-bold text-xs sm:text-sm uppercase tracking-wider px-4 sm:px-6 py-3 sm:py-3.5 rounded-xl border transition-all duration-300 focus:outline-none cursor-pointer ${
               activeTab === 'clients'
                 ? 'bg-blue-600 border-blue-600 text-white shadow-lg shadow-blue-600/20 scale-[1.02]'
-                : 'bg-white border-gray-150 text-gray-500 hover:text-blue-600 hover:border-blue-600/30'
+                : 'bg-white border-gray-200 text-gray-500 hover:text-blue-600 hover:border-blue-600/30'
             }`}
           >
             <Briefcase className="w-4 h-4" />

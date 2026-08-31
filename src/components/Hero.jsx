@@ -96,17 +96,17 @@ export default function Hero(props) {
               Upscale is a two-sided platform helping students become career-ready and businesses build powerful digital solutions with our freelance experts.
             </p>
 
-            <div className="flex flex-row items-center gap-4 mb-10">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-10">
               <button
                 onClick={function () { onNavigate('Students'); }}
-                className="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-sans text-sm font-semibold px-5 py-3.5 rounded-2xl shadow-lg shadow-brand-orange/20 transition-all duration-300 hover:-translate-y-0.5 shrink-0 cursor-pointer focus:outline-none"
+                className="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-sans text-sm font-semibold px-5 py-3.5 rounded-2xl shadow-lg shadow-brand-orange/20 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto shrink-0 cursor-pointer focus:outline-none"
               >
                 <GraduationCap className="w-5 h-5" />
                 <span>I'm a Student</span>
               </button>
               <button
                 onClick={function () { onNavigate('Clients'); }}
-                className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/50 hover:bg-white/5 text-white font-sans text-sm font-semibold px-5 py-3.5 rounded-2xl transition-all duration-300 hover:-translate-y-0.5 shrink-0 cursor-pointer focus:outline-none"
+                className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/50 hover:bg-white/5 text-white font-sans text-sm font-semibold px-5 py-3.5 rounded-2xl transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto shrink-0 cursor-pointer focus:outline-none"
               >
                 <Briefcase className="w-5 h-5" />
                 <span>I'm a Client</span>

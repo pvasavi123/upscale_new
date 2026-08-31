@@ -49,7 +49,7 @@ export default function CtaBanner({ onNavigate }) {
                 <span className="block font-display text-sm sm:text-base font-semibold text-brand-orange">
                   Small steps today,
                 </span>
-                <span className="block font-display text-2xl sm:text-3.5xl font-extrabold text-white leading-tight mt-1">
+                <span className="block font-display text-2xl sm:text-4xl font-extrabold text-white leading-tight mt-1">
                   big future tomorrow.
                 </span>
               </div>

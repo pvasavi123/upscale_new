@@ -32,3 +32,34 @@ html, body {
   background-image: radial-gradient(rgba(11, 21, 40, 0.08) 1px, transparent 1px);
   background-size: 20px 20px;
 }
+
+/* ---- Mobile hardening ---- */
+
+/* Never allow a stray element to scroll the page sideways on a phone */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Long words/emails can't push a card wider than the screen */
+h1, h2, h3, h4, p, a, span, li {
+  overflow-wrap: break-word;
+}
+
+/* iOS Safari zooms the page when a focused control is under 16px */
+@media (max-width: 640px) {
+  input,
+  select,
+  textarea {
+    font-size: 16px;
+  }
+}
+
+/* Give tapped controls a comfortable target on touch screens */
+@media (pointer: coarse) {
+  button,
+  a[role="button"],
+  input[type="submit"] {
+    min-height: 44px;
+  }
+}

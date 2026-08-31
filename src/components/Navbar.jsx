@@ -26,6 +26,15 @@ export default function Navbar({ currentPage, onNavigate }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Prevent the page behind the mobile drawer from scrolling
+  useEffect(() => {
+    const original = document.body.style.overflow;
+    document.body.style.overflow = isOpen ? 'hidden' : original || '';
+    return () => {
+      document.body.style.overflow = original || '';
+    };
+  }, [isOpen]);
+
   const navLinks = [
     { name: 'Home', page: 'Home' },
     { name: 'For Students', page: 'Students' },
@@ -105,7 +114,7 @@ export default function Navbar({ currentPage, onNavigate }) {
 
       {/* Mobile Menu Drawer */}
       {isOpen && (
-        <div className="lg:hidden fixed inset-0 z-40 bg-brand-navy/95 backdrop-blur-md flex flex-col justify-center px-8 py-10 transition-all duration-300">
+        <div className="lg:hidden fixed inset-0 z-40 bg-brand-navy/95 backdrop-blur-md flex flex-col justify-center px-8 py-10 overflow-y-auto overscroll-contain transition-all duration-300">
           <div className="absolute top-6 right-6">
             <button
               onClick={() => setIsOpen(false)}

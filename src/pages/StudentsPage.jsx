@@ -489,7 +489,7 @@ export default function StudentsPage({ onNavigate }) {
           <div className="bg-brand-navy rounded-[32px] relative overflow-hidden p-8 md:p-14 border border-white/5 text-center shadow-2xl">
             <div className="absolute inset-0 grid-bg-pattern opacity-25 pointer-events-none" />
             <div className="relative z-10 max-w-xl mx-auto flex flex-col items-center gap-6">
-              <h3 className="font-display font-extrabold text-2xl sm:text-3.5xl text-white leading-tight">
+              <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-white leading-tight">
                 Ready to Build Your Career?
               </h3>
               <p className="font-sans text-gray-300 text-sm sm:text-base leading-relaxed">

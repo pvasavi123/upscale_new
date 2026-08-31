@@ -80,7 +80,7 @@ export default function AboutPage({ onNavigate }) {
             </div>
             
             {/* Real Statistics Box (No invented details) */}
-            <div className="lg:col-span-5 bg-[#FCFDFF] border border-gray-150 rounded-3xl p-8 flex flex-col justify-center shadow-md">
+            <div className="lg:col-span-5 bg-[#FCFDFF] border border-gray-200 rounded-3xl p-8 flex flex-col justify-center shadow-md">
               <span className="font-display font-bold text-xs tracking-wider text-brand-navy uppercase block mb-6">
                 Upscale Metrics
               </span>
@@ -297,23 +297,23 @@ export default function AboutPage({ onNavigate }) {
           <div className="bg-brand-navy rounded-[32px] relative overflow-hidden p-8 md:p-14 border border-white/5 text-center shadow-2xl">
             <div className="absolute inset-0 grid-bg-pattern opacity-25 pointer-events-none" />
             <div className="relative z-10 max-w-xl mx-auto flex flex-col items-center gap-6">
-              <h3 className="font-display font-extrabold text-2xl sm:text-3.5xl text-white leading-tight">
+              <h3 className="font-display font-extrabold text-2xl sm:text-4xl text-white leading-tight">
                 Let's Build Something Meaningful Together.
               </h3>
               <p className="font-sans text-gray-300 text-sm sm:text-base leading-relaxed">
                 Connect with our technical coordinate leads to request project evaluation scopes or schedule custom consultations.
               </p>
-              <div className="flex flex-row items-center gap-4">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 w-full sm:w-auto">
                 <button
                   onClick={() => onNavigate('Students')}
-                  className="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-sans text-sm font-semibold px-6 py-4 rounded-xl shadow-lg shadow-brand-orange/20 transition-all duration-300 hover:-translate-y-0.5 shrink-0 cursor-pointer focus:outline-none"
+                  className="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-sans text-sm font-semibold px-6 py-4 rounded-xl shadow-lg shadow-brand-orange/20 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto shrink-0 cursor-pointer focus:outline-none"
                 >
                   For Students
                   <ArrowRight className="w-4 h-4" />
                 </button>
                 <button
                   onClick={() => onNavigate('Clients')}
-                  className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/50 hover:bg-white/5 text-white font-sans text-sm font-semibold px-6 py-4 rounded-xl transition-all duration-300 hover:-translate-y-0.5 shrink-0 cursor-pointer focus:outline-none"
+                  className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/50 hover:bg-white/5 text-white font-sans text-sm font-semibold px-6 py-4 rounded-xl transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto shrink-0 cursor-pointer focus:outline-none"
                 >
                   For Clients
                   <ArrowRight className="w-4 h-4" />
