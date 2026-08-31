@@ -279,9 +279,9 @@ export default function ClientsPage({ onNavigate }) {
       </section>
 
       {/* Technology Stack Preview */}
-      <section className="py-20 bg-white text-left">
+      <section className="pt-10 pb-20 sm:py-20 bg-white text-left">
         <div className="max-w-7xl mx-auto px-6 lg:px-16">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             <div className="lg:col-span-6">
               <div className="flex items-center gap-3 mb-3">
@@ -293,9 +293,10 @@ export default function ClientsPage({ onNavigate }) {
               <h2 className="font-display font-extrabold text-3xl text-brand-navy leading-tight mb-4">
                 Our Technology Stack
               </h2>
-              <p className="font-sans text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
+              <p className="font-sans text-gray-600 text-sm sm:text-base leading-relaxed">
                 We select architectures based on performance, scalability, and lifecycle costs. We build digital solutions using modern frontend frameworks, backend runtimes, database layers, and cloud providers.
-              </p>            </div>
+              </p>
+            </div>
 
             <div className="lg:col-span-6 bg-[#FCFDFF] border border-gray-100 rounded-3xl p-5 sm:p-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
