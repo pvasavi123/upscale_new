@@ -164,7 +164,7 @@ export default function ClientsPage({ onNavigate }) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div 
                 key={index} 
@@ -294,15 +294,7 @@ export default function ClientsPage({ onNavigate }) {
               </h2>
               <p className="font-sans text-gray-600 text-sm sm:text-base leading-relaxed mb-6">
                 We select architectures based on performance, scalability, and lifecycle costs. We build digital solutions using modern frontend frameworks, backend runtimes, database layers, and cloud providers.
-              </p>
-              <button 
-                onClick={() => onNavigate('Services')}
-                className="inline-flex items-center gap-2 font-display font-bold text-sm text-brand-orange hover:text-brand-orange-hover transition-colors focus:outline-none cursor-pointer"
-              >
-                View Technology Stack
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </div>
+              </p>            </div>
 
             <div className="lg:col-span-6 bg-[#FCFDFF] border border-gray-100 rounded-3xl p-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

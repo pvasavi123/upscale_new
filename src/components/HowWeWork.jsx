@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { ArrowRight, BookOpen, PenTool, Terminal, CheckCircle, MessageSquare, Clipboard, Settings, Send, HelpCircle, Users, Briefcase, ShieldCheck, Clock } from 'lucide-react';
+import { BookOpen, PenTool, Terminal, MessageSquare, Clipboard, Settings, Send, HelpCircle, Users, Briefcase, ShieldCheck, Clock } from 'lucide-react';
 
-export default function HowWeWork({ onNavigate }) {
+export default function HowWeWork() {
   const [activeTab, setActiveTab] = useState('students');
 
   const studentSteps = [
@@ -71,7 +71,7 @@ export default function HowWeWork({ onNavigate }) {
         </div>
 
         {/* Steps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16 min-h-[300px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 min-h-[300px]">
           {activeSteps.map((step, idx) => (
             <div
               key={idx}
@@ -97,19 +97,6 @@ export default function HowWeWork({ onNavigate }) {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Navigation Link to services */}
-        <div className="text-center">
-          <button
-            onClick={() => onNavigate('Services')}
-            className={`inline-flex items-center gap-2 font-display font-bold text-sm transition-colors focus:outline-none cursor-pointer ${
-              activeTab === 'students' ? 'text-brand-orange hover:text-brand-orange-hover' : 'text-blue-600 hover:text-blue-700'
-            }`}
-          >
-            View Our Process
-            <ArrowRight className="w-4 h-4" />
-          </button>
         </div>
 
       </div>

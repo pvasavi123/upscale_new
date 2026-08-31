@@ -89,13 +89,13 @@ function App() {
               <Tracks onNavigate={handleNavigate} />
 
               {/* How We Work Section */}
-              <HowWeWork onNavigate={handleNavigate} />
+              <HowWeWork />
 
               {/* Why Choose Us Section */}
               <WhyChoose />
 
               {/* Technology Stack Preview Section */}
-              <TechStack onNavigate={handleNavigate} />
+              <TechStack />
 
               {/* Team Preview Section */}
               <TeamPreview onNavigate={handleNavigate} />

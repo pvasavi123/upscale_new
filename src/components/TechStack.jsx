@@ -1,7 +1,7 @@
 import React from 'react';
-import { ArrowRight, Code2, Database, Brain, Settings, Cloud, Layers } from 'lucide-react';
+import { Code2, Database, Brain, Settings, Cloud, Layers } from 'lucide-react';
 
-export default function TechStack({ onNavigate }) {
+export default function TechStack() {
   const categories = [
     {
       title: 'Frontend',
@@ -60,7 +60,7 @@ export default function TechStack({ onNavigate }) {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {categories.map((cat, index) => (
             <div 
               key={index} 
@@ -87,17 +87,6 @@ export default function TechStack({ onNavigate }) {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Link to Services */}
-        <div className="text-center">
-          <button 
-            onClick={() => onNavigate('Services')}
-            className="inline-flex items-center gap-2 font-display font-bold text-sm text-brand-orange hover:text-brand-orange-hover transition-colors focus:outline-none cursor-pointer"
-          >
-            Explore Services
-            <ArrowRight className="w-4 h-4" />
-          </button>
         </div>
 
       </div>
