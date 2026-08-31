@@ -97,7 +97,8 @@ export default function ClientsPage({ onNavigate }) {
     { title: '2. Plan', desc: 'We draft structural wireframes, establish the technical stack architectures, and define timelines.' },
     { title: '3. Develop', desc: 'Our developers build features in bi-weekly sprints under senior coordinator code reviews.' },
     { title: '4. Test', desc: 'We perform responsive layout checks, API validation, and functional verification.' },
-    { title: '5. Deliver', desc: 'We coordinate production server deployments, git repository handoff, and launch support.' }
+    { title: '5. Deliver', desc: 'We coordinate production server deployments, git repository handoff, and launch support.' },
+    { title: '6. Support', desc: 'We provide post-launch technical monitoring, issue resolution, and scoping updates for future iterations.' }
   ];
 
   const techGroups = [
@@ -296,12 +297,23 @@ export default function ClientsPage({ onNavigate }) {
                 We select architectures based on performance, scalability, and lifecycle costs. We build digital solutions using modern frontend frameworks, backend runtimes, database layers, and cloud providers.
               </p>            </div>
 
-            <div className="lg:col-span-6 bg-[#FCFDFF] border border-gray-100 rounded-3xl p-8">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="lg:col-span-6 bg-[#FCFDFF] border border-gray-100 rounded-3xl p-5 sm:p-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 {techGroups.map((group, index) => (
-                  <div key={index} className="bg-white rounded-xl p-4 border border-gray-100 shadow-md hover:border-brand-orange/20 transition-all duration-200">
-                    <span className="block font-display font-bold text-[10px] text-brand-orange uppercase mb-1">{group.title}</span>
-                    <p className="font-sans text-[11px] font-semibold text-gray-500 leading-snug">{group.skills.join(', ')}</p>
+                  <div key={index} className="bg-white rounded-2xl p-5 border border-gray-100 shadow-md hover:border-brand-orange/20 transition-all duration-200">
+                    <span className="block font-display font-bold text-xs sm:text-sm text-brand-orange uppercase tracking-wider mb-3">
+                      {group.title}
+                    </span>
+                    <div className="flex flex-wrap gap-2">
+                      {group.skills.map((skill, idx) => (
+                        <span
+                          key={idx}
+                          className="px-2.5 py-1.5 rounded-lg bg-gray-50 text-xs font-sans font-semibold text-gray-600 border border-gray-100"
+                        >
+                          {skill}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 ))}
               </div>
