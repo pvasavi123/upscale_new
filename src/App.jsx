@@ -38,6 +38,11 @@ const hashToPage = {
   '#contact': 'Contact'
 };
 
+// Visitors who set "reduce motion" in their OS get an instant jump instead
+const prefersReducedMotion = () =>
+  typeof window !== 'undefined' &&
+  window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 function App() {
   const getPageFromHash = () => {
     const hash = window.location.hash.toLowerCase();
@@ -51,7 +56,7 @@ function App() {
     const handleHashChange = () => {
       const page = getPageFromHash();
       setCurrentPage(page);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
     };
 
     window.addEventListener('hashchange', handleHashChange);
@@ -71,7 +76,7 @@ function App() {
     if (window.location.hash !== targetHash) {
       window.location.hash = targetHash;
     } else {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
     }
   };
 
