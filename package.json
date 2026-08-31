@@ -5,14 +5,16 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "node scripts/gen-knowledge.mjs && vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "gen:knowledge": "node scripts/gen-knowledge.mjs"
   },
   "dependencies": {
     "lucide-react": "^1.33.0",
     "react": "^19.2.8",
-    "react-dom": "^19.2.8"
+    "react-dom": "^19.2.8",
+    "@google/generative-ai": "^0.24.1"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
@@ -24,5 +26,8 @@
     "postcss": "^8.5.26",
     "tailwindcss": "^4.3.3",
     "vite": "^8.2.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   }
 }

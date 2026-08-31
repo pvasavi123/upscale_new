@@ -410,8 +410,95 @@
   }
 
   /**
-   * Main state machine for conversation flow.
-   * Calls secure backend REST APIs on localhost BFF port.
+   * POSTs JSON to a backend endpoint and returns the parsed body.
+   * Returns null (instead of throwing) whenever the API is unavailable or
+   * errors, so the caller can transparently fall back to local logic.
+   */
+  async function postJson(url, payload) {
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+      if (!response.ok) {
+        console.warn(`Chatbot API ${url} responded with ${response.status}; using local logic.`);
+        return null;
+      }
+      return await response.json();
+    } catch (err) {
+      console.warn(`Chatbot API ${url} unreachable; using local logic.`, err.message);
+      return null;
+    }
+  }
+
+  /**
+   * Maps free text onto one of the knowledge-base project templates.
+   * Mirrors the server-side matcher so the widget still works offline.
+   */
+  function matchTemplateKey(text) {
+    const lower = String(text || '').toLowerCase();
+    if (/(shop|store|e-?commerce|sell|cart|retail)/.test(lower)) return 'ecommerce';
+    if (/(food|delivery|restaurant|grocery)/.test(lower)) return 'food_delivery';
+    if (/(learn|course|school|lms|education|student)/.test(lower)) return 'learning_management';
+    if (/(health|clinic|doctor|hospital|medical|patient)/.test(lower)) return 'healthcare_app';
+    if (/(social|community|feed|network|forum)/.test(lower)) return 'social_media';
+    if (/(\bai\b|gpt|chatbot|\bbot\b|machine learning|\bml\b|llm)/.test(lower)) return 'ai_application';
+    if (/(mobile|android|ios|\bapp\b)/.test(lower)) return 'mobile_app';
+    return 'portfolio_website';
+  }
+
+  function templateKeyFromAnswers() {
+    return matchTemplateKey([
+      state.answers.project_type,
+      state.answers.key_features,
+      state.answers.platform,
+      state.answers.target_users
+    ].filter(Boolean).join(' '));
+  }
+
+  /** Local equivalent of POST /api/chatbot { step: 'greeting' }. */
+  function localAnalyzeIdea(idea) {
+    const key = matchTemplateKey(idea);
+    const temp = state.knowledge.projectTemplates[key];
+    return {
+      projectCategory: temp.name,
+      acknowledgement: `That sounds like a great project! A **${temp.name}** is something our team can definitely help you build. To outline the requirements, let's go through a quick questionnaire.`,
+      suggestedTemplate: key
+    };
+  }
+
+  /** Local equivalent of POST /api/chatbot { step: 'features' }. */
+  function localSuggestFeatures() {
+    const temp = state.knowledge.projectTemplates[templateKeyFromAnswers()];
+    const effort = state.knowledge.pricingRules.moduleEffort;
+    return {
+      introduction: `Based on your answers, we recommend including these core features for your ${temp.name}:`,
+      suggestedFeatures: temp.suggestedFeatures.map(key => ({
+        key,
+        label: effort[key] ? effort[key].label : key,
+        reason: 'Recommended as a core module for this project type.'
+      }))
+    };
+  }
+
+  /** Local equivalent of POST /api/chatbot { step: 'tech' }. */
+  function localRecommendTech() {
+    const temp = state.knowledge.projectTemplates[templateKeyFromAnswers()];
+    return {
+      introduction: 'For your project architecture, we officially recommend using our verified technology stack:',
+      recommendations: {
+        frontend: { name: temp.suggestedTech.frontend, reason: 'Provides a highly responsive, modern interface suitable for this platform.' },
+        backend: { name: temp.suggestedTech.backend, reason: 'Ensures robust processing and standard API design.' },
+        database: { name: temp.suggestedTech.database, reason: 'Ensures persistent storage and transactional integrity.' }
+      }
+    };
+  }
+
+  /**
+   * Main state machine for the conversation flow.
+   * Every backend call degrades to deterministic local logic when the API is
+   * unavailable, so the widget never dead-ends on the fallback message.
    */
   async function processConversationFlow(userInput) {
     showTyping();
@@ -420,99 +507,79 @@
     try {
       if (state.currentStep === 'greeting') {
         state.projectIdea = userInput;
-        
-        // Call backend POST /api/chatbot for greeting/categorization
-        const response = await fetch(`${CONFIG.apiBaseUrl}/chatbot`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ step: 'greeting', message: userInput })
-        });
-        
-        if (!response.ok) throw new Error('API server failed');
-        const resData = await response.json();
-        
-        appendMessage('assistant', resData.data.acknowledgement);
-        
-        // Auto-detect template feature mapping
-        state.suggestedTemplate = resData.data.suggestedTemplate;
-        state.answers.project_type = resData.data.projectCategory || resData.data.suggestedTemplate;
-        
-        // Move to Discovery Questionnaire
+
+        const res = await postJson(`${CONFIG.apiBaseUrl}/chatbot`, { step: 'greeting', message: userInput });
+        const data = (res && res.data) ? res.data : localAnalyzeIdea(userInput);
+
+        hideTyping();
+        appendMessage('assistant', data.acknowledgement);
+
+        state.suggestedTemplate = data.suggestedTemplate;
+        state.answers.project_type = data.projectCategory || data.suggestedTemplate;
+
+        // Move on to the discovery questionnaire.
         state.currentStep = 'discovery';
         state.discoveryQuestionIndex = 0;
         askNextDiscoveryQuestion();
-      } 
+      }
       else if (state.currentStep === 'discovery') {
-        // Save answers
         const currentQ = state.knowledge.discoveryQuestions[state.discoveryQuestionIndex];
         state.answers[currentQ.id] = userInput;
 
         state.discoveryQuestionIndex++;
         if (state.discoveryQuestionIndex < state.knowledge.discoveryQuestions.length) {
+          hideTyping();
           askNextDiscoveryQuestion();
         } else {
-          // Discovery completed, get feature suggestions from backend
           state.currentStep = 'features';
-          
-          const response = await fetch(`${CONFIG.apiBaseUrl}/chatbot`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ step: 'features', answers: state.answers })
-          });
-          
-          if (!response.ok) throw new Error('API server failed');
-          const resData = await response.json();
-          
-          // Save recommended features
-          state.selectedFeatures = resData.data.suggestedFeatures.map(f => f.key);
-          
-          // Display the recommendations
-          let displayMsg = resData.data.introduction + '\n\n';
-          resData.data.suggestedFeatures.forEach(f => {
+
+          const res = await postJson(`${CONFIG.apiBaseUrl}/chatbot`, { step: 'features', answers: state.answers });
+          const data = (res && res.data && Array.isArray(res.data.suggestedFeatures) && res.data.suggestedFeatures.length)
+            ? res.data
+            : localSuggestFeatures();
+
+          state.selectedFeatures = data.suggestedFeatures.map(f => f.key);
+
+          let displayMsg = data.introduction + '\n\n';
+          data.suggestedFeatures.forEach(f => {
             displayMsg += `• **${f.label}**: ${f.reason}\n`;
           });
-          
+
+          hideTyping();
           appendMessage('assistant', displayMsg);
-          
+
           appendChips([
             { label: 'Confirm Stack & Estimate', value: 'Perfect, proceed with these features.' },
             { label: 'Custom Scopes', value: 'Proceed to design parameters' }
           ]);
         }
-      } 
+      }
       else if (state.currentStep === 'features') {
-        // Feature recommendations accepted, fetch tech stack recommendations from backend
         state.currentStep = 'tech';
-        
-        const response = await fetch(`${CONFIG.apiBaseUrl}/chatbot`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ step: 'tech', answers: state.answers })
-        });
-        
-        if (!response.ok) throw new Error('API server failed');
-        const resData = await response.json();
-        
-        // Save tech recommendation state
+
+        const res = await postJson(`${CONFIG.apiBaseUrl}/chatbot`, { step: 'tech', answers: state.answers });
+        const data = (res && res.data && res.data.recommendations) ? res.data : localRecommendTech();
+
         state.recommendedTech = {
-          frontend: resData.data.recommendations.frontend.name,
-          backend: resData.data.recommendations.backend.name,
-          database: resData.data.recommendations.database.name
+          frontend: data.recommendations.frontend.name,
+          backend: data.recommendations.backend.name,
+          database: data.recommendations.database.name
         };
 
-        let displayMsg = resData.data.introduction + '\n\n' +
-          `• **Frontend**: ${resData.data.recommendations.frontend.name} (${resData.data.recommendations.frontend.reason})\n` +
-          `• **Backend**: ${resData.data.recommendations.backend.name} (${resData.data.recommendations.backend.reason})\n` +
-          `• **Database**: ${resData.data.recommendations.database.name} (${resData.data.recommendations.database.reason})`;
-          
+        const displayMsg = data.introduction + '\n\n' +
+          `• **Frontend**: ${data.recommendations.frontend.name} (${data.recommendations.frontend.reason})\n` +
+          `• **Backend**: ${data.recommendations.backend.name} (${data.recommendations.backend.reason})\n` +
+          `• **Database**: ${data.recommendations.database.name} (${data.recommendations.database.reason})`;
+
+        hideTyping();
         appendMessage('assistant', displayMsg);
 
-        // Transition to estimation display
         state.currentStep = 'estimate';
         await fetchAndDisplayEstimate();
       }
     } catch (err) {
       console.error('Chatbot conversation step error:', err);
+      hideTyping();
       appendMessage('assistant', state.knowledge.responseTemplates.fallback);
       els.input.disabled = false;
       els.input.focus();
@@ -706,6 +773,52 @@
   }
 
   /**
+   * Builds the pre-filled WhatsApp handoff link locally.
+   * Used only when POST /api/leads is unreachable, so the user is never
+   * left without a way to reach the team.
+   */
+  function localWhatsAppUrl(lead, est) {
+    const rawPhone = (state.knowledge.company && state.knowledge.company.phone) || '+91 9063593070';
+    const digits = rawPhone.replace(/\D/g, '');
+    const fullPhone = digits.length <= 10 ? `91${digits}` : digits;
+    const a = lead.answers || {};
+
+    const answersText = [
+      `• *Project Type:* ${a.project_type || 'N/A'}`,
+      `• *Target Users:* ${a.target_users || 'N/A'}`,
+      `• *Platform:* ${a.platform || 'N/A'}`,
+      `• *User Scale:* ${a.scale || 'N/A'}`,
+      `• *Key Features Details:* ${a.key_features || 'N/A'}`,
+      `• *Integrations:* ${a.integrations || 'None'}`,
+      `• *Requested Timeline:* ${a.timeline || 'N/A'}`,
+      `• *Approx. Budget Range:* ${a.budget_range || 'N/A'}`
+    ].join('\n');
+
+    const featuresText = (lead.features && lead.features.length) ? lead.features.join(', ') : 'None selected';
+    const techText = lead.technologies && Object.keys(lead.technologies).length
+      ? Object.entries(lead.technologies).map(([layer, tech]) => `*${layer.toUpperCase()}:* ${tech}`).join(', ')
+      : 'None recommended';
+
+    const symbol = (est && est.currencySymbol) || '₹';
+    const estimateText = est
+      ? `Budget: ${symbol}${est.minCost.toLocaleString('en-IN')} - ${symbol}${est.maxCost.toLocaleString('en-IN')} (~${est.weeks} weeks)`
+      : 'Not calculated';
+
+    const message = `*New Lead from Upscale Chatbot*\n\n` +
+      `*Contact Info:*\n` +
+      `• *Name:* ${lead.name}\n` +
+      `• *Email:* ${lead.email}\n` +
+      `• *Phone:* ${lead.phone || 'Not provided'}\n\n` +
+      `*Project Objective/Idea:*\n${lead.projectIdea}\n\n` +
+      `*Discovery Questionnaire Answers:*\n${answersText}\n\n` +
+      `*Confirmed Modules:*\n• ${featuresText}\n\n` +
+      `*Recommended Tech Stack:*\n• ${techText}\n\n` +
+      `*Effort & Budget Estimate:*\n• ${estimateText}`;
+
+    return `https://wa.me/${fullPhone}?text=${encodeURIComponent(message)}`;
+  }
+
+  /**
    * Renders the lead collection form and handles POST submission.
    */
   function appendLeadCaptureForm() {
@@ -780,15 +893,12 @@
       };
 
       try {
-        // POST request to backend API to store lead and generate WhatsApp handoff
-        const response = await fetch(`${CONFIG.apiBaseUrl}/leads`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(leadPayload)
-        });
-
-        if (!response.ok) throw new Error('API server returned error');
-        const resData = await response.json();
+        // Store the lead via the backend; if that is unreachable, still hand off
+        // to WhatsApp using a locally generated link.
+        const resData = await postJson(`${CONFIG.apiBaseUrl}/leads`, leadPayload);
+        const whatsappUrl = (resData && resData.whatsappUrl)
+          ? resData.whatsappUrl
+          : localWhatsAppUrl(leadPayload, state.calculatedEstimate);
 
         // 1. Success Message
         appendMessage('assistant', state.knowledge.responseTemplates.thankYou);
@@ -809,12 +919,12 @@
         waButton.style.background = '#25D366';
         waButton.innerHTML = '<i class="fa-brands fa-whatsapp"></i> Chat on WhatsApp';
         waButton.addEventListener('click', () => {
-          window.open(resData.whatsappUrl, '_blank');
+          window.open(whatsappUrl, '_blank');
         });
         form.appendChild(waButton);
 
         // Auto-launch WhatsApp redirect
-        window.open(resData.whatsappUrl, '_blank');
+        window.open(whatsappUrl, '_blank');
 
       } catch (err) {
         console.error('Lead submission failure:', err);
