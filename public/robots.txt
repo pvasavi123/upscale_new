@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://upscale-new-beryl.vercel.app/sitemap.xml
