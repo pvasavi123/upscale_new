@@ -8,6 +8,7 @@ import TechStack from './components/TechStack';
 import TeamPreview from './components/TeamPreview';
 import CtaBanner from './components/CtaBanner';
 import Footer from './components/Footer';
+import SEO from './components/SEO';
 
 // Pages
 import StudentsPage from './pages/StudentsPage';
@@ -127,6 +128,7 @@ function App() {
 
   return (
     <div className="relative min-h-screen bg-white overflow-x-hidden antialiased flex flex-col justify-between">
+      <SEO currentPage={currentPage} />
       <div>
         {/* Global Navigation Header */}
         <Navbar currentPage={currentPage} onNavigate={handleNavigate} />

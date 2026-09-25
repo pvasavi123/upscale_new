@@ -1,4 +1,7 @@
+# robots.txt for Upscale
 User-agent: *
 Allow: /
+Disallow: /api/
 
 Sitemap: https://upscale-new-beryl.vercel.app/sitemap.xml
+Host: https://upscale-new-beryl.vercel.app
