@@ -87,13 +87,12 @@ export default function Hero(props) {
               I Build. You Grow.
             </span>
 
-            <h1 className="font-display font-extrabold text-4xl sm:text-5xl lg:text-[54px] text-white leading-[1.1] tracking-tight mb-6">
-              Real Support. <br />
-              Real <span className="text-brand-orange">Growth</span>.
+            <h1 className="font-display font-extrabold text-3xl sm:text-4.5xl lg:text-[48px] text-white leading-[1.15] tracking-tight mb-6">
+              Professional Software Development & <span className="text-brand-orange">Project Support</span>
             </h1>
 
             <p className="font-sans text-gray-300 text-sm sm:text-base leading-relaxed mb-8 max-w-md">
-              Upscale is a two-sided platform helping students become career-ready and businesses build powerful digital solutions with our freelance experts.
+              Upscale is a collaborative 6-member tech team helping students build practical software projects and career profiles, while delivering custom web, mobile, and SaaS digital solutions for clients.
             </p>
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4 w-full sm:w-auto mb-10">
@@ -102,14 +101,14 @@ export default function Hero(props) {
                 className="inline-flex items-center justify-center gap-2 bg-brand-orange hover:bg-brand-orange-hover text-white font-sans text-sm font-semibold px-5 py-3.5 rounded-2xl shadow-lg shadow-brand-orange/20 transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto shrink-0 cursor-pointer focus:outline-none"
               >
                 <GraduationCap className="w-5 h-5" />
-                <span>I'm a Student</span>
+                <span>For Students</span>
               </button>
               <button
                 onClick={function () { onNavigate('Clients'); }}
                 className="inline-flex items-center justify-center gap-2 border border-white/20 hover:border-white/50 hover:bg-white/5 text-white font-sans text-sm font-semibold px-5 py-3.5 rounded-2xl transition-all duration-300 hover:-translate-y-0.5 w-full sm:w-auto shrink-0 cursor-pointer focus:outline-none"
               >
                 <Briefcase className="w-5 h-5" />
-                <span>I'm a Client</span>
+                <span>For Clients</span>
               </button>
             </div>
 
@@ -140,7 +139,11 @@ export default function Hero(props) {
               <div className="w-full h-full overflow-hidden rounded-tl-[260px] rounded-tr-3xl rounded-br-3xl rounded-bl-3xl shadow-2xl relative">
                 <img
                   src={heroTeamImg}
-                  alt="Team of young professionals collaborating"
+                  alt="Upscale technology team collaborating on software development and student project support"
+                  loading="eager"
+                  fetchPriority="high"
+                  width="560"
+                  height="420"
                   className="w-full h-full object-cover object-center"
                 />
                 <div className="absolute inset-0 bg-brand-navy/10 mix-blend-multiply"></div>

@@ -112,12 +112,28 @@ export default function ServicesPage({ onNavigate }) {
               ))}
             </div>
             
-            <div className="mt-8 text-center md:text-left">
+            <div className="mt-8 flex flex-wrap gap-4 items-center">
               <button 
-                onClick={() => onNavigate('Students')}
+                onClick={() => onNavigate('FinalYearProject')}
                 className="inline-flex items-center gap-2 font-display font-bold text-sm text-brand-orange hover:text-brand-orange-hover transition-colors focus:outline-none cursor-pointer"
               >
-                Learn More About Students Pathway
+                Final Year Project Guidance
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <span className="text-gray-300">•</span>
+              <button 
+                onClick={() => onNavigate('ResumeAtsSupport')}
+                className="inline-flex items-center gap-2 font-display font-bold text-sm text-brand-orange hover:text-brand-orange-hover transition-colors focus:outline-none cursor-pointer"
+              >
+                Resume & ATS Support
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <span className="text-gray-300">•</span>
+              <button 
+                onClick={() => onNavigate('Students')}
+                className="inline-flex items-center gap-2 font-display font-bold text-sm text-gray-600 hover:text-brand-navy transition-colors focus:outline-none cursor-pointer"
+              >
+                All Student Pathways
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -163,12 +179,28 @@ export default function ServicesPage({ onNavigate }) {
               ))}
             </div>
 
-            <div className="mt-12 text-center md:text-left">
+            <div className="mt-12 flex flex-wrap gap-4 items-center">
               <button 
-                onClick={() => onNavigate('Clients')}
+                onClick={() => onNavigate('WebDevelopment')}
                 className="inline-flex items-center gap-2 font-display font-bold text-sm text-blue-600 hover:text-blue-700 transition-colors focus:outline-none cursor-pointer"
               >
-                Learn More About Clients Pathway
+                Web Development Services
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <span className="text-gray-300">•</span>
+              <button 
+                onClick={() => onNavigate('MobileAppDevelopment')}
+                className="inline-flex items-center gap-2 font-display font-bold text-sm text-blue-600 hover:text-blue-700 transition-colors focus:outline-none cursor-pointer"
+              >
+                Mobile App Development
+                <ArrowRight className="w-4 h-4" />
+              </button>
+              <span className="text-gray-300">•</span>
+              <button 
+                onClick={() => onNavigate('SoftwareDevelopment')}
+                className="inline-flex items-center gap-2 font-display font-bold text-sm text-blue-600 hover:text-blue-700 transition-colors focus:outline-none cursor-pointer"
+              >
+                Custom Software & MVPs
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>

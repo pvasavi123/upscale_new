@@ -10,28 +10,58 @@ import CtaBanner from './components/CtaBanner';
 import Footer from './components/Footer';
 import SEO from './components/SEO';
 
-// Pages
+// Existing Pages
 import StudentsPage from './pages/StudentsPage';
 import ClientsPage from './pages/ClientsPage';
 import ServicesPage from './pages/ServicesPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 
-// Map page names to URL hashes
-const pageToHash = {
-  'Home': '#home',
-  'Students': '#students',
-  'Clients': '#clients',
-  'Services': '#services',
-  'About': '#about',
-  'Contact': '#contact'
+// Dedicated SEO Service Pages
+import FinalYearProjectPage from './pages/FinalYearProjectPage';
+import WebDevelopmentPage from './pages/WebDevelopmentPage';
+import MobileAppPage from './pages/MobileAppPage';
+import SoftwareDevelopmentPage from './pages/SoftwareDevelopmentPage';
+import ResumeAtsPage from './pages/ResumeAtsPage';
+
+// Map page names to clean canonical URLs
+const pageToPath = {
+  Home: '/',
+  FinalYearProject: '/final-year-project-guidance',
+  WebDevelopment: '/web-development',
+  MobileAppDevelopment: '/mobile-app-development',
+  SoftwareDevelopment: '/software-development',
+  ResumeAtsSupport: '/resume-ats-support',
+  Students: '/students',
+  Clients: '/clients',
+  Services: '/services',
+  About: '/about',
+  Contact: '/contact'
 };
 
-const hashToPage = {
-  '': 'Home',
+// Map URL paths and legacy hashes to page names
+const routeToPage = {
+  '/': 'Home',
+  '/home': 'Home',
+  '/final-year-project-guidance': 'FinalYearProject',
+  '/web-development': 'WebDevelopment',
+  '/mobile-app-development': 'MobileAppDevelopment',
+  '/software-development': 'SoftwareDevelopment',
+  '/resume-ats-support': 'ResumeAtsSupport',
+  '/students': 'Students',
+  '/clients': 'Clients',
+  '/services': 'Services',
+  '/about': 'About',
+  '/contact': 'Contact',
+  // Hash fallbacks
   '#': 'Home',
   '#/': 'Home',
   '#home': 'Home',
+  '#final-year-project-guidance': 'FinalYearProject',
+  '#web-development': 'WebDevelopment',
+  '#mobile-app-development': 'MobileAppDevelopment',
+  '#software-development': 'SoftwareDevelopment',
+  '#resume-ats-support': 'ResumeAtsSupport',
   '#students': 'Students',
   '#clients': 'Clients',
   '#services': 'Services',
@@ -39,46 +69,54 @@ const hashToPage = {
   '#contact': 'Contact'
 };
 
-// Visitors who set "reduce motion" in their OS get an instant jump instead
 const prefersReducedMotion = () =>
   typeof window !== 'undefined' &&
   window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-function App() {
-  const getPageFromHash = () => {
-    const hash = window.location.hash.toLowerCase();
-    const matchedKey = Object.keys(hashToPage).find(key => key.toLowerCase() === hash);
-    return matchedKey ? hashToPage[matchedKey] : 'Home';
-  };
+function getActivePage() {
+  if (typeof window === 'undefined') return 'Home';
 
-  const [currentPage, setCurrentPage] = useState(getPageFromHash);
+  // 1. Check pathname first
+  const pathname = window.location.pathname.toLowerCase().replace(/\/$/, '') || '/';
+  if (routeToPage[pathname]) {
+    return routeToPage[pathname];
+  }
+
+  // 2. Check hash fallback
+  const hash = window.location.hash.toLowerCase();
+  if (hash && routeToPage[hash]) {
+    return routeToPage[hash];
+  }
+
+  return 'Home';
+}
+
+function App() {
+  const [currentPage, setCurrentPage] = useState(getActivePage);
 
   useEffect(() => {
-    const handleHashChange = () => {
-      const page = getPageFromHash();
+    const handleLocationChange = () => {
+      const page = getActivePage();
       setCurrentPage(page);
       window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
     };
 
-    window.addEventListener('hashchange', handleHashChange);
-
-    // Default to #home if no hash exists on entry
-    if (!window.location.hash) {
-      window.history.replaceState(null, '', '#home');
-    }
+    window.addEventListener('popstate', handleLocationChange);
+    window.addEventListener('hashchange', handleLocationChange);
 
     return () => {
-      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleLocationChange);
     };
   }, []);
 
   const handleNavigate = (page) => {
-    const targetHash = pageToHash[page] || '#home';
-    if (window.location.hash !== targetHash) {
-      window.location.hash = targetHash;
-    } else {
-      window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+    const targetPath = pageToPath[page] || '/';
+    if (window.location.pathname !== targetPath) {
+      window.history.pushState(null, '', targetPath);
     }
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
   };
 
   const renderPage = () => {
@@ -111,6 +149,16 @@ function App() {
             </main>
           </>
         );
+      case 'FinalYearProject':
+        return <FinalYearProjectPage onNavigate={handleNavigate} />;
+      case 'WebDevelopment':
+        return <WebDevelopmentPage onNavigate={handleNavigate} />;
+      case 'MobileAppDevelopment':
+        return <MobileAppPage onNavigate={handleNavigate} />;
+      case 'SoftwareDevelopment':
+        return <SoftwareDevelopmentPage onNavigate={handleNavigate} />;
+      case 'ResumeAtsSupport':
+        return <ResumeAtsPage onNavigate={handleNavigate} />;
       case 'Students':
         return <StudentsPage onNavigate={handleNavigate} />;
       case 'Clients':

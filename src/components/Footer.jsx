@@ -4,8 +4,8 @@ import wordmark from '../assets/wordmark.png';
 
 const Logo = () => (
   <div className="flex items-center gap-[3px]">
-    <img src={uIcon} alt="Upscale Icon" className="h-7 w-auto shrink-0" />
-    <img src={wordmark} alt="Upscale Wordmark" className="h-4.5 w-auto shrink-0 invert" />
+    <img src={uIcon} alt="Upscale Icon" width="28" height="28" className="h-7 w-auto shrink-0" />
+    <img src={wordmark} alt="Upscale Wordmark" width="90" height="18" className="h-4.5 w-auto shrink-0 invert" />
   </div>
 );
 
@@ -18,85 +18,149 @@ export default function Footer({ onNavigate }) {
       <div className="absolute inset-0 grid-bg-pattern opacity-10 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-16 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           
           {/* Column 1: Logo & Brief Description */}
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-4">
             <button 
               onClick={() => onNavigate('Home')}
               className="flex items-center self-start hover:opacity-90 transition-opacity focus:outline-none cursor-pointer"
             >
               <Logo />
             </button>
-            <p className="font-sans text-gray-400 text-xs sm:text-sm leading-relaxed max-w-xs">
-              We build, you grow. <br />
-              Empowering students. <br />
-              Building businesses. <br />
-              Creating a better future.
+            <p className="font-sans text-gray-400 text-xs sm:text-sm leading-relaxed">
+              Professional software development and student project mentoring. Hyderabad hub serving clients and graduates worldwide.
             </p>
-          </div>
-
-          {/* Column 2: Student Links */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-display font-extrabold text-sm tracking-wider text-white uppercase">
-              For Students
-            </h4>
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-400">
-              <svg className="w-4 h-4 text-brand-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              <a href="mailto:upscale.careersupport@gmail.com" className="hover:text-brand-orange transition-colors">
-                upscale.careersupport@gmail.com
+            <div className="flex items-center gap-3 mt-2">
+              <a
+                href="https://instagram.com/upscale.services"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Upscale on Instagram"
+                className="w-8 h-8 rounded-full bg-white/5 hover:bg-brand-orange text-gray-400 hover:text-white flex items-center justify-center transition-colors"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                  <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                  <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                </svg>
               </a>
-            </div>
-            
-            <h4 className="font-display font-extrabold text-sm tracking-wider text-white uppercase mt-4">
-              Follow
-            </h4>
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-400">
-              <svg className="w-4 h-4 text-brand-orange shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
-              <a href="https://instagram.com/upscale.services" target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors">
-                upscale.services
-              </a>
-            </div>
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-400 mt-2">
-              <svg className="w-4 h-4 text-brand-orange shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect x="2" y="9" width="4" height="12" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-              <a href="https://www.linkedin.com/company/upscale-it-services/posts/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors">
-                Upscale IT Services
+              <a
+                href="https://www.linkedin.com/company/upscale-it-services/posts/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Upscale on LinkedIn"
+                className="w-8 h-8 rounded-full bg-white/5 hover:bg-brand-orange text-gray-400 hover:text-white flex items-center justify-center transition-colors"
+              >
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                  <rect x="2" y="9" width="4" height="12" />
+                  <circle cx="4" cy="4" r="2" />
+                </svg>
               </a>
             </div>
           </div>
 
-          {/* Column 3: Client Links */}
-          <div className="flex flex-col gap-4">
-            <h4 className="font-display font-extrabold text-sm tracking-wider text-white uppercase">
-              For Clients / Freelancing
+          {/* Column 2: Student Services */}
+          <div className="flex flex-col gap-3">
+            <h4 className="font-display font-extrabold text-xs tracking-wider text-white uppercase mb-1">
+              Student Project Tracks
             </h4>
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-400">
-              <svg className="w-4 h-4 text-brand-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-              </svg>
-              <a href="mailto:upscale.freelancer@gmail.com" className="hover:text-brand-orange transition-colors">
-                upscale.freelancer@gmail.com
-              </a>
-            </div>
-            
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-gray-400">
-              <svg className="w-4 h-4 text-brand-orange shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.94.725l.548 2.2a1 1 0 01-.321.988l-1.305.98a10.582 10.582 0 004.872 4.872l.98-1.305a1 1 0 01.988-.321l2.2.548a1 1 0 01.725.94V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-              </svg>
-              <a href="tel:+919063593070" className="hover:text-brand-orange transition-colors">
-                +91 90635 93070
-              </a>
-            </div>
+            <button
+              onClick={() => onNavigate('FinalYearProject')}
+              className="text-left font-sans text-xs sm:text-sm text-gray-400 hover:text-brand-orange transition-colors cursor-pointer focus:outline-none"
+            >
+              Final Year Project Guidance
+            </button>
+            <button
+              onClick={() => onNavigate('ResumeAtsSupport')}
+              className="text-left font-sans text-xs sm:text-sm text-gray-400 hover:text-brand-orange transition-colors cursor-pointer focus:outline-none"
+            >
+              Resume & ATS Optimization
+            </button>
+            <button
+              onClick={() => onNavigate('Students')}
+              className="text-left font-sans text-xs sm:text-sm text-gray-400 hover:text-brand-orange transition-colors cursor-pointer focus:outline-none"
+            >
+              All Student Pathways
+            </button>
+            <a
+              href="mailto:upscale.careersupport@gmail.com"
+              className="font-sans text-xs text-brand-orange hover:underline mt-2 inline-block"
+            >
+              upscale.careersupport@gmail.com
+            </a>
+          </div>
+
+          {/* Column 3: Client Services */}
+          <div className="flex flex-col gap-3">
+            <h4 className="font-display font-extrabold text-xs tracking-wider text-white uppercase mb-1">
+              Engineering Services
+            </h4>
+            <button
+              onClick={() => onNavigate('WebDevelopment')}
+              className="text-left font-sans text-xs sm:text-sm text-gray-400 hover:text-blue-400 transition-colors cursor-pointer focus:outline-none"
+            >
+              Web Development Services
+            </button>
+            <button
+              onClick={() => onNavigate('MobileAppDevelopment')}
+              className="text-left font-sans text-xs sm:text-sm text-gray-400 hover:text-blue-400 transition-colors cursor-pointer focus:outline-none"
+            >
+              Mobile App Development
+            </button>
+            <button
+              onClick={() => onNavigate('SoftwareDevelopment')}
+              className="text-left font-sans text-xs sm:text-sm text-gray-400 hover:text-blue-400 transition-colors cursor-pointer focus:outline-none"
+            >
+              Custom Software & MVPs
+            </button>
+            <button
+              onClick={() => onNavigate('Clients')}
+              className="text-left font-sans text-xs sm:text-sm text-gray-400 hover:text-blue-400 transition-colors cursor-pointer focus:outline-none"
+            >
+              All Client Solutions
+            </button>
+            <a
+              href="mailto:upscale.freelancer@gmail.com"
+              className="font-sans text-xs text-blue-400 hover:underline mt-2 inline-block"
+            >
+              upscale.freelancer@gmail.com
+            </a>
+          </div>
+
+          {/* Column 4: Quick Contact */}
+          <div className="flex flex-col gap-3">
+            <h4 className="font-display font-extrabold text-xs tracking-wider text-white uppercase mb-1">
+              Connect With Us
+            </h4>
+            <button
+              onClick={() => onNavigate('About')}
+              className="text-left font-sans text-xs sm:text-sm text-gray-400 hover:text-white transition-colors cursor-pointer focus:outline-none"
+            >
+              About Upscale Team
+            </button>
+            <button
+              onClick={() => onNavigate('Services')}
+              className="text-left font-sans text-xs sm:text-sm text-gray-400 hover:text-white transition-colors cursor-pointer focus:outline-none"
+            >
+              Services Overview
+            </button>
+            <button
+              onClick={() => onNavigate('Contact')}
+              className="text-left font-sans text-xs sm:text-sm text-gray-400 hover:text-white transition-colors cursor-pointer focus:outline-none"
+            >
+              Contact & Scoping Brief
+            </button>
+            <a
+              href="tel:+919063593070"
+              className="font-sans text-xs sm:text-sm font-semibold text-white hover:text-brand-orange transition-colors mt-2"
+            >
+              📞 +91 90635 93070
+            </a>
+            <span className="font-sans text-[11px] text-gray-500">
+              Hyderabad, Telangana, India (Remote-First)
+            </span>
           </div>
 
         </div>
@@ -104,20 +168,20 @@ export default function Footer({ onNavigate }) {
         {/* Bottom Bar */}
         <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="font-sans text-xs text-gray-500">
-            © {currentYear} Upscale. All rights reserved.
+            © {currentYear} Upscale IT Services. All rights reserved.
           </span>
           <div className="flex gap-6">
             <button 
-              onClick={() => onNavigate('Home')}
+              onClick={() => onNavigate('About')}
               className="font-sans text-xs text-gray-500 hover:text-white transition-colors cursor-pointer focus:outline-none"
             >
-              Privacy Policy
+              About Us
             </button>
             <button 
-              onClick={() => onNavigate('Home')}
+              onClick={() => onNavigate('Contact')}
               className="font-sans text-xs text-gray-500 hover:text-white transition-colors cursor-pointer focus:outline-none"
             >
-              Terms & Conditions
+              Contact Support
             </button>
           </div>
         </div>
